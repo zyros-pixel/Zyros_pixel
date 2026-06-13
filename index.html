@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zyros Pixel — AI Training Video Datasets</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <svg class="logo-hex" viewBox="0 0 24 24" fill="none"><path d="M12 2L21 7V17L12 22L3 17V7L12 2Z" stroke="currentColor" stroke-width="1.5"/></svg>
+        Zyros<span>Pixel</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#datasets">Datasets</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-dots"></div>
+    <div class="hero-glow"></div>
+    <div class="wrap hero-wrap">
+      <p class="eyebrow">Premium AI Training Data</p>
+      <h1>Video Datasets<br><span class="gradient-text">Built for AI</span></h1>
+      <p class="hero-sub">Curated, high-resolution video footage for training object detection, facial recognition, motion analysis, and more. Purchase directly — fast delivery guaranteed.</p>
+      <div class="hero-ctas">
+        <a href="#datasets" class="btn-primary">Browse Datasets</a>
+        <a href="#how-it-works" class="btn-ghost">How It Works</a>
+      </div>
+      <div class="hero-bar">
+        <div class="hero-stat"><span class="stat-num" id="statCount">—</span><span class="stat-label">Datasets</span></div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat"><span class="stat-num">4K</span><span class="stat-label">Max Resolution</span></div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat"><span class="stat-num">24h</span><span class="stat-label">Response Time</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATASETS -->
+  <section class="section" id="datasets">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Available <span class="gradient-text">Datasets</span></h2>
+        <p>Select a dataset and reach out via email to purchase</p>
+      </div>
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-cat="all">All</button>
+      </div>
+      <div class="video-grid" id="videoGrid">
+        <div class="skeleton-grid">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section-dark" id="how-it-works">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How It <span class="gradient-text">Works</span></h2>
+        <p>Simple, direct purchase process — no accounts needed</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3>Browse</h3>
+          <p>Explore our catalog of curated video datasets across different categories and use cases.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3>Select</h3>
+          <p>Click "Purchase" on the dataset you need. Review details like resolution, duration, and frame count.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3>Email Us</h3>
+          <p>Send us an email with the dataset title. We'll reply with payment options within 24 hours.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <h3>Download</h3>
+          <p>Once payment is confirmed, receive a secure download link for your dataset files.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="wrap contact-center">
+      <h2>Ready to <span class="gradient-text">Get Started?</span></h2>
+      <p>Have questions about our datasets or need something custom? We'd love to hear from you.</p>
+      <a href="#" id="contactMailto" class="contact-email-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span id="contactEmailDisplay">Loading…</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a href="index.html" class="logo footer-logo">
+        <svg class="logo-hex" viewBox="0 0 24 24" fill="none"><path d="M12 2L21 7V17L12 22L3 17V7L12 2Z" stroke="currentColor" stroke-width="1.5"/></svg>
+        Zyros<span>Pixel</span>
+      </a>
+      <p class="footer-copy">© 2025 Zyros Pixel. All rights reserved.</p>
+      <a href="admin.html" class="footer-admin">Admin ↗</a>
+    </div>
+  </footer>
+
+  <!-- PURCHASE MODAL -->
+  <div class="overlay" id="overlay" onclick="closeModal()"></div>
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+    <button class="modal-x" onclick="closeModal()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-inner">
+      <p class="modal-eyebrow">Purchase Dataset</p>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-meta" id="modalMeta"></div>
+      <div class="modal-price-row">
+        <span class="modal-price" id="modalPrice"></span>
+        <span class="modal-cat" id="modalCat"></span>
+      </div>
+      <hr class="modal-hr">
+      <p class="modal-info">Send us an email with the dataset name. We'll respond within <strong>24 hours</strong> with payment options and a secure download link.</p>
+      <div class="modal-email-block">
+        <span class="email-label">Contact Email</span>
+        <div class="email-row">
+          <span class="email-value" id="modalEmail"></span>
+          <button class="copy-btn" id="copyBtn" onclick="copyEmail()">Copy</button>
+        </div>
+      </div>
+      <a href="#" id="modalMailto" class="btn-primary btn-block">Open Email Client →</a>
+      <p class="modal-hint">Include <em id="modalTitleHint"></em> in your subject line.</p>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

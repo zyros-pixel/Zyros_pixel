@@ -1,0 +1,49 @@
+{
+  "config": {
+    "contactEmail": "contact@zyrospixel.com",
+    "currency": "USD",
+    "currencySymbol": "$",
+    "siteName": "Zyros Pixel"
+  },
+  "videos": [
+    {
+      "id": "v001",
+      "title": "Urban Street Motion Dataset",
+      "description": "High-quality street footage for object detection and tracking models. Includes pedestrians, vehicles, and cyclists across night, rain, and sunny conditions.",
+      "price": 49.99,
+      "category": "Object Detection",
+      "resolution": "4K",
+      "duration": "30 min",
+      "frames": "54,000",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&auto=format",
+      "videoPreviewUrl": "",
+      "tags": ["urban", "motion", "detection", "tracking"]
+    },
+    {
+      "id": "v002",
+      "title": "Facial Expression Pack Vol.1",
+      "description": "Diverse expression dataset featuring 50+ individuals across multiple ethnicities. Ideal for emotion recognition and facial landmark detection.",
+      "price": 79.99,
+      "category": "Facial Recognition",
+      "resolution": "1080p",
+      "duration": "45 min",
+      "frames": "81,000",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&auto=format",
+      "videoPreviewUrl": "",
+      "tags": ["facial", "expressions", "emotion", "recognition"]
+    },
+    {
+      "id": "v003",
+      "title": "Industrial Anomaly Detection",
+      "description": "Manufacturing floor footage for quality control AI training. Covers normal operations plus defect scenarios including surface faults and assembly errors.",
+      "price": 129.99,
+      "category": "Anomaly Detection",
+      "resolution": "4K",
+      "duration": "60 min",
+      "frames": "108,000",
+      "thumbnailUrl": "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=600&auto=format",
+      "videoPreviewUrl": "",
+      "tags": ["industrial", "quality", "manufacturing", "anomaly"]
+    }
+  ]
+}

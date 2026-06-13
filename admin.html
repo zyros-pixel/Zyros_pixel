@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Zyros Pixel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <div class="login-logo">
+        <svg class="logo-hex" viewBox="0 0 24 24" fill="none"><path d="M12 2L21 7V17L12 22L3 17V7L12 2Z" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>Zyros<em>Pixel</em> Admin</span>
+      </div>
+      <p class="login-sub">Enter your admin password to continue</p>
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="pwInput" placeholder="Admin password" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <div class="login-error" id="loginError"></div>
+      <button class="btn-primary" onclick="doLogin()">Sign In →</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard hidden" id="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a href="index.html" class="logo sidebar-logo" target="_blank">
+        <svg class="logo-hex" viewBox="0 0 24 24" fill="none"><path d="M12 2L21 7V17L12 22L3 17V7L12 2Z" stroke="currentColor" stroke-width="1.5"/></svg>
+        Zyros<span>Pixel</span>
+      </a>
+      <nav class="sidebar-nav">
+        <a href="#" class="snav-item active" onclick="showTab('videos',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 8h11a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z"/></svg>
+          Videos
+        </a>
+        <a href="#" class="snav-item" onclick="showTab('settings',this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+          Settings
+        </a>
+      </nav>
+      <button class="snav-item logout-btn" onclick="doLogout()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        Logout
+      </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-area">
+
+      <!-- ── Videos Tab ── -->
+      <div class="tab-panel" id="tab-videos">
+        <div class="panel-head">
+          <div>
+            <h1>Videos</h1>
+            <p class="panel-sub">Manage your dataset catalog</p>
+          </div>
+          <div class="panel-actions">
+            <button class="btn-export" onclick="exportJSON()">⬇ Export videos.json</button>
+            <button class="btn-primary" onclick="openAddModal()">+ Add Video</button>
+          </div>
+        </div>
+
+        <!-- Stats row -->
+        <div class="stats-row" id="statsRow"></div>
+
+        <!-- Videos table -->
+        <div class="table-wrap">
+          <table class="vtable" id="vTable">
+            <thead>
+              <tr>
+                <th>Thumbnail</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Resolution</th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="vTableBody">
+              <tr><td colspan="6" class="tbl-empty">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="export-note">After making changes, click <strong>Export videos.json</strong> and upload the file to your GitHub repo to publish changes.</p>
+      </div>
+
+      <!-- ── Settings Tab ── -->
+      <div class="tab-panel hidden" id="tab-settings">
+        <div class="panel-head">
+          <div>
+            <h1>Settings</h1>
+            <p class="panel-sub">Site configuration</p>
+          </div>
+        </div>
+        <div class="settings-card">
+          <h3>Site Configuration</h3>
+          <div class="form-grid">
+            <div class="input-group">
+              <label>Contact Email <span class="req">*</span></label>
+              <input type="email" id="cfgEmail" placeholder="contact@example.com">
+              <p class="field-hint">This email is shown to customers when they want to purchase.</p>
+            </div>
+            <div class="input-group">
+              <label>Currency Symbol</label>
+              <input type="text" id="cfgSymbol" placeholder="$" maxlength="3">
+            </div>
+          </div>
+          <button class="btn-primary" onclick="saveSettings()">Save Settings</button>
+          <div class="settings-notice" id="settingsSaved" style="display:none">✓ Settings saved — export videos.json to publish</div>
+        </div>
+
+        <div class="settings-card mt20">
+          <h3>Admin Password</h3>
+          <p class="field-hint" style="margin-bottom:16px">To change the admin password, edit the <code>ADMIN_PASSWORD</code> constant at the top of <code>admin.js</code>, then re-upload the file to GitHub.</p>
+          <div class="warn-box">⚠ Note: This is a static site — the password is stored in admin.js. Keep your GitHub repo private or delete admin.html after making updates for extra security.</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ── Add / Edit Modal ── -->
+  <div class="overlay" id="formOverlay" onclick="closeFormModal()"></div>
+  <div class="form-modal" id="formModal">
+    <div class="form-modal-head">
+      <h2 id="formModalTitle">Add Video</h2>
+      <button class="modal-x" onclick="closeFormModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="form-modal-body">
+      <input type="hidden" id="editId">
+      <div class="form-grid">
+        <div class="input-group span2">
+          <label>Title <span class="req">*</span></label>
+          <input type="text" id="fTitle" placeholder="Urban Street Motion Dataset">
+        </div>
+        <div class="input-group span2">
+          <label>Description <span class="req">*</span></label>
+          <textarea id="fDesc" rows="3" placeholder="Describe the dataset contents, use cases, and key features…"></textarea>
+        </div>
+        <div class="input-group">
+          <label>Category <span class="req">*</span></label>
+          <input type="text" id="fCat" placeholder="Object Detection">
+        </div>
+        <div class="input-group">
+          <label>Price (USD) <span class="req">*</span></label>
+          <input type="number" id="fPrice" placeholder="49.99" min="0" step="0.01">
+        </div>
+        <div class="input-group">
+          <label>Resolution</label>
+          <input type="text" id="fRes" placeholder="4K">
+        </div>
+        <div class="input-group">
+          <label>Duration</label>
+          <input type="text" id="fDur" placeholder="30 min">
+        </div>
+        <div class="input-group">
+          <label>Frame Count</label>
+          <input type="text" id="fFrames" placeholder="54,000">
+        </div>
+        <div class="input-group span2">
+          <label>Thumbnail URL</label>
+          <input type="url" id="fThumb" placeholder="https://…">
+          <p class="field-hint">Paste a direct image URL. Leave blank for default placeholder.</p>
+        </div>
+        <div class="input-group span2">
+          <label>Tags (comma-separated)</label>
+          <input type="text" id="fTags" placeholder="urban, motion, detection">
+        </div>
+      </div>
+    </div>
+    <div class="form-modal-foot">
+      <button class="btn-cancel" onclick="closeFormModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveVideo()">Save Video</button>
+    </div>
+  </div>
+
+  <!-- ── Delete Confirm ── -->
+  <div class="overlay" id="delOverlay" onclick="closeDelModal()"></div>
+  <div class="confirm-modal" id="delModal">
+    <h3>Delete Video?</h3>
+    <p>This will remove <strong id="delTitle"></strong> from your catalog. You'll need to export and re-upload videos.json.</p>
+    <div class="confirm-actions">
+      <button class="btn-cancel" onclick="closeDelModal()">Cancel</button>
+      <button class="btn-danger" onclick="confirmDelete()">Delete</button>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
