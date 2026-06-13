@@ -1,8 +1,8 @@
 {
   "config": {
-    "contactEmail": "contact@zyrospixel.com",
-    "currency": "USD",
-    "currencySymbol": "$",
+    "contactEmail": "zyrospixel@proton.me",
+    "currency": "RS",
+    "currencySymbol": "₹",
     "siteName": "Zyros Pixel"
   },
   "videos": [
